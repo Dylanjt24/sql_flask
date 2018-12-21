@@ -1,0 +1,12 @@
+pymysql.err.OperationalError: (1045, "Access denied for user 'toot'@'localhost' (using password: YES)")
+
+fix: Input the correct username
+
+AttributeError: module 'pymysql.cursors' has no attribute 'DictCursorr'
+
+fix: Corrected the attribute to read 'DictCursor'
+
+pymysql.err.OperationalError: (1045, "Access denied for user 'root'@'localhost' (using password: YES)")
+
+fix: Input the correct password
+
