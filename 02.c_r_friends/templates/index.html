@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>C+R Friends</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h2>These are my friends!</h2>
+            <table class="table table-striped table-bordered table-dark">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Occupation</th>
+                    </tr>
+                    {% for friend in friends %}
+                    <tr>
+                        <td>{{ friend['first_name'] }}</td>
+                        <td>{{ friend['last_name'] }}</td>
+                        <td>{{ friend['occupation'] }}</td>
+                    </tr>
+                    {% endfor %}
+            </table>
+        </div>
+        <div>
+            <h2 id='under'>Add a friend</h2>
+            <form action="/create_friend" method="POST">
+                <div class="form-group row">
+                    <label for="first_name">First Name:</label>
+                    <input type="text" name="first_name" class="form-control" placeholder="First Name">
+                </div>
+                <div class="form-group row">
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" name="last_name" class="form-control" placeholder="Last Name">
+                </div>
+                <div class="form-group row">
+                    <label for="occupation">Occupation:</label>
+                    <input type="text" name="occupation" class="form-control" placeholder="Occupation">
+                </div>
+                <input type="submit" class="btn btn-success" value="Add">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
