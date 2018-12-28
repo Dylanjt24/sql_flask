@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Email Added</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="jumbotron">
+        <h1 class="display-5">The email address you entered ({{ current_email }}) is a valid email address! Thank you!</h1>
+    </div>
+    <h3>Email Addresses Entered:</h3>
+    <table>
+        {% for email in emails %}
+            <tr>
+                <td>{{ email['email'] }}</td>
+                <td>{{ email['created_at'].strftime('%m/%d/%Y %I:%M%p') }}</td>
+                <td>
+                    <form action="/delete" method="POST" class="form-group">
+                        <input type="hidden" class="form-control" name="email_id" value="{{ email['id'] }}">
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
