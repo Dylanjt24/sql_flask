@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Danger</title>
+    <style>
+        .container{
+            width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Danger</h1>
+        <p>Hmm.. Message {{ session['message_id'] }} doesn't belong to you. Are you trying to hack my site???</p>
+        <p>Your ip address {{ session['user_ip'] }} has been recorded.</p>
+        <p>Next time you attempt an activity like this we'll log you off automatically and report your ip address to our site administrator.</p>
+    </div>
+</body>
+</html>

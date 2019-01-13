@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="jumbotron">
+            <h1 class="display-3">Welcome {{ session['first_name'] }}!</h1>
+            <p class="lead">Shoot your friends a message; I'm sure they'd love to hear from you!</p>
+            <a class="display-6" href="/logout">log off</a>
+        </div>
+        <div class="incoming">
+            <h4>{{ messages | count }} Message(s) for you {{ session['first_name'] }}</h4>
+            {% for message in messages: %}
+                <p>{{ message['first_name'] }} said at {{ message['created_at'].strftime('%I:%M %A, %b %d') }}:</p>
+                <ul>
+                    <li>{{ message['content'] }}</li>
+                    <a href="/delete_message/{{ message['id'] }}">Delete</a>
+                </ul>
+            {% endfor %}
+        </div>
+        <div class="outgoing">
+        <h4>Send a message</h4>
+        <form action="/create_message" method="POST">
+            <div class="form-group row">
+                {% for user in users: %}
+                    <label for="new_message" class="col-sm-2 col-form-label">{{ user['first_name'] }}</label>
+                    <div class="col-sm-10">
+                        <textarea name="new_message" class="form-control" cols="30" rows="2"></textarea>
+                        <input type="hidden" name="recipient_id" value="{{ user['id'] }}">
+                        <input type="submit" class="btn btn-primary" value="Send">
+                    </div>
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+</body>
+</html>

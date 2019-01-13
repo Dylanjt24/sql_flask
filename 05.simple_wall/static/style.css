@@ -1,0 +1,25 @@
+ .container {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+#registration {
+    float: left;
+    width: 500px;
+}
+
+#login {
+    float: left;
+    width: 500px;
+    margin-top: 55px;
+    margin-left: 200px;
+}
+
+li {
+    color: red;
+    list-style-type: none;
+}
+
+.form-group {
+    text-align: left;
+}

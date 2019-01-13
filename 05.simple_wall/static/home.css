@@ -1,0 +1,30 @@
+h4 {
+    text-decoration: underline;
+}
+
+li {
+    list-style: none;
+}
+
+.incoming {
+    float: left;
+    margin-left: 40px;
+    width: 900px;
+}
+
+.outgoing {
+    vertical-align: top;
+    float: right;
+    margin-right: 40px;
+    width: 900px;
+}
+
+/* form {
+    text-align: right;
+} */
+
+input {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    float: right;
+}

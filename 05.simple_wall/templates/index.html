@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login and Registration</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div id="registration">
+            <h1>Login and Registration</h1>
+            <h2>Register here!</h2>
+            <form action="/register" method="POST">
+                <div class="form-group">
+                    <label for="first_name">First Name:</label>
+                    {% with messages = get_flashed_messages(category_filter=["first_name"]) %}
+                        {% if messages %}
+                            <ul class=flashes>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                    <input type="text" class="form-control" name="first_name" value="{{ session['first_name'] }}">
+                </div>
+                <div class="form-group">
+                    <label for="last_name">Last Name:</label>
+                    {% with messages = get_flashed_messages(category_filter=["last_name"]) %}
+                        {% if messages %}
+                            <ul class=flashes>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                    <input type="text" class="form-control" name="last_name" value="{{ session['last_name'] }}">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    {% with messages = get_flashed_messages(category_filter=["email"]) %}
+                        {% if messages %}
+                            <ul class=flashes>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                    <input type="text" class="form-control" name="email" value="{{ session['email'] }}">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    {% with messages = get_flashed_messages(category_filter=["password"]) %}
+                        {% if messages %}
+                            <ul class=flashes>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                    <input type="password" class="form-control" name="password">
+                </div>
+                <div class="form-group">
+                    <label for="pw_confirm">Confirm Password:</label>
+                    {% with messages = get_flashed_messages(category_filter=["pw_confirm"]) %}
+                        {% if messages %}
+                            <ul class=flashes>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                    <input type="password" class="form-control" name="pw_confirm">
+                </div>
+                    <input type="submit" class="btn btn-success" value="Register!">
+                </form>
+            </div>
+        </div>
+        <div id="login">
+            <h2>Login here!</h2>
+            {% with messages = get_flashed_messages(category_filter=["login"]) %}
+                {% if messages %}
+                    <ul class=flashes>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" class="form-control" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+                    <input type="submit" class="btn btn-success" value="Login!">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
